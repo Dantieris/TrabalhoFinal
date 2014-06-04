@@ -1,6 +1,7 @@
 package com.senac.lib;
 
 public enum Criticidade {
+	
 	BLOCKER("BLOCKER"),
 	CRITICAL("CRITICAL"),
 	HIGH("HIGH"),
