@@ -1,5 +1,8 @@
 package com.senac.lib;
 
+/**
+ * Este enum representa objetos dos estados de uma Issue.
+ */
 public enum Status {	
 	
 	NOVO("NOVO"),
@@ -16,6 +19,10 @@ public enum Status {
 		this.descricao = descricao;
 	}
 	
+	/**
+	 * Acessa a descrição do Status.
+	 * @return A descrição.
+	 */
 	public String getDescricao(){
 		return this.descricao;
 	}

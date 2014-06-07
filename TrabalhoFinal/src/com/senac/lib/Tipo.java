@@ -1,5 +1,8 @@
 package com.senac.lib;
 
+/**
+ * Este enum representa objetos dos tipos de uma Issue.
+ */
 public enum Tipo {
 	
 	BUG("BUG"),
@@ -11,6 +14,10 @@ public enum Tipo {
 		this.descricao = descricao;
 	}
 	
+	/**
+	 * Acessa a descrição do Tipo.
+	 * @return A descrição.
+	 */
 	public String getDescricao(){
 		return this.descricao;
 	}

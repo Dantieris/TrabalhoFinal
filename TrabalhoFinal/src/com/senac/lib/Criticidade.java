@@ -1,5 +1,8 @@
 package com.senac.lib;
 
+/**
+ * Este enum representa objetos dos níveis de criticidade de uma Issue.
+ */
 public enum Criticidade {
 	
 	BLOCKER("BLOCKER"),
@@ -14,6 +17,10 @@ public enum Criticidade {
 		this.descricao = descricao;
 	}
 	
+	/**
+	 * Acessa a descrição da criticidade.
+	 * @return A descrição.
+	 */
 	public String getDescricao(){
 		return this.descricao;
 	}
