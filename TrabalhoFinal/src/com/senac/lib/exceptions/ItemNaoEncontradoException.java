@@ -3,7 +3,7 @@ package com.senac.lib.exceptions;
 /**
  * Esta classe representa a excecão de quando um item não seja encontrado.
  */
-public class ItemNotFoundException extends Exception {
+public class ItemNaoEncontradoException extends Exception {
 	
 	/**
 	 * Número serial da excecão.
@@ -13,7 +13,7 @@ public class ItemNotFoundException extends Exception {
 	/**
 	 * Inicializa um objeto ItemNotFoundException recém-criado.
 	 */
-	public ItemNotFoundException() {
+	public ItemNaoEncontradoException() {
 		super();
 	}
 }
