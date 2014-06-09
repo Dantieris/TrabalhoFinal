@@ -32,7 +32,7 @@ public class Evento implements Comparable<Evento> {
 	public int getDataCriacao() {
 		return dataCriacao;
 	}
-	public void setDataCriacao(int dataCriacao) {
+	private void setDataCriacao(int dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 	public String getComentario() {
