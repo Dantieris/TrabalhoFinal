@@ -1,13 +1,14 @@
 package com.senac.tests.lib;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.senac.lib.ListaOrdenada;
-import com.senac.lib.exceptions.ItemNotFoundException;
+import com.senac.lib.exceptions.ItemNaoEncontradoException;
 import com.senac.lib.exceptions.ListaVaziaException;
 
 public class ListaOrdenadaTest {
@@ -54,7 +55,7 @@ public class ListaOrdenadaTest {
 	@Test
 	public void testProcurarQuandoListaPossuiItem() throws ListaVaziaException, 
 	
-														   ItemNotFoundException
+														   ItemNaoEncontradoException
 	{
 		lista.inserir(3);
 		lista.inserir(1);
@@ -65,14 +66,14 @@ public class ListaOrdenadaTest {
 	
 	@Test(expected = ListaVaziaException.class)
 	public void testProcuraLancaExcecaoQuandoListaVazia() throws ListaVaziaException, 
-																 ItemNotFoundException					
+																 ItemNaoEncontradoException					
 	{
 		lista.procura(10);
 	}
 	
-	@Test(expected = ItemNotFoundException.class)
+	@Test(expected = ItemNaoEncontradoException.class)
 	public void testProcuraLancaExcecaoQuandoItemNaoEstaNaLista() throws ListaVaziaException, 
-																		 ItemNotFoundException 
+																		 ItemNaoEncontradoException 
 	{
 		lista.inserir(1);
 		lista.procura(10);
@@ -80,7 +81,7 @@ public class ListaOrdenadaTest {
 	
 	@Test
 	public void testRemoverItemDaListaQuandoListaTemUmItem() throws ListaVaziaException, 
-											  						ItemNotFoundException 
+											  						ItemNaoEncontradoException 
 	{
 		lista.inserir(1);
 		lista.remover(1);
@@ -88,9 +89,9 @@ public class ListaOrdenadaTest {
 		assertTrue( lista.getHead() == null );
 	}
 	
-	@Test(expected = ItemNotFoundException.class)
+	@Test(expected = ItemNaoEncontradoException.class)
 	public void testRemoverTailComListaPopulada() throws ListaVaziaException,
-																		  ItemNotFoundException
+																		  ItemNaoEncontradoException
 	{
 		lista.inserir(1);
 		lista.inserir(2);
@@ -99,9 +100,9 @@ public class ListaOrdenadaTest {
 		lista.procura(3);
 	}
 	
-	@Test(expected = ItemNotFoundException.class)
+	@Test(expected = ItemNaoEncontradoException.class)
 	public void testRemoverItemComListaPopulada() throws ListaVaziaException,
-														 ItemNotFoundException
+														 ItemNaoEncontradoException
 	{
 		lista.inserir(1);
 		lista.inserir(2);
@@ -110,9 +111,9 @@ public class ListaOrdenadaTest {
 		lista.procura(2);
 	}
 	
-	@Test(expected = ItemNotFoundException.class)
+	@Test(expected = ItemNaoEncontradoException.class)
 	public void testRemoverItensComListaPopulada() throws ListaVaziaException,
-														 ItemNotFoundException
+														 ItemNaoEncontradoException
 	{
 		for(int i = 0 ; i < 6 ; i++)
 			lista.inserir(i);

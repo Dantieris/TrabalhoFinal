@@ -1,6 +1,6 @@
 package com.senac.lib;
 
-import com.senac.lib.exceptions.ItemNotFoundException;
+import com.senac.lib.exceptions.ItemNaoEncontradoException;
 import com.senac.lib.exceptions.ListaVaziaException;
 
 /**
@@ -104,7 +104,7 @@ public class ListaOrdenada<T extends Comparable<T>> {
 	 * @throws ListaVaziaException Se a lista estiver vazia.
 	 * @throws ItemNotFoundException Se o item não estiver na lista.
 	 */
-	public Nodo<T> procura(T valor) throws ListaVaziaException, ItemNotFoundException {
+	public Nodo<T> procura(T valor) throws ListaVaziaException, ItemNaoEncontradoException {
 		Nodo<T> iter = head;
 		
 		if (isVazia())
@@ -117,11 +117,11 @@ public class ListaOrdenada<T extends Comparable<T>> {
 				return iter;
 			
 			if (cmp < 0)
-				throw new ItemNotFoundException();
+				throw new ItemNaoEncontradoException();
 
 			iter = iter.getProximo();
 		}
-		throw new ItemNotFoundException();
+		throw new ItemNaoEncontradoException();
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class ListaOrdenada<T extends Comparable<T>> {
 	 * @throws ItemNotFoundException Se o item não estiver na lista.
 	 */
 	public void remover(T valor) throws ListaVaziaException, 
-										ItemNotFoundException 
+										ItemNaoEncontradoException 
 	{
 		Nodo<T> nodo = procura(valor);
 		
