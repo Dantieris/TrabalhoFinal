@@ -6,7 +6,7 @@ package com.senac.model;
  * Como funciona apenas como repositório de informações
  * não contém Testes.
  */
-public class Evento implements Comparable<Evento> {
+public class Evento {
 
 	private int dataCriacao;
 	private String comentario;
@@ -46,13 +46,6 @@ public class Evento implements Comparable<Evento> {
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	@Override
-	public int compareTo(Evento arg0) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
+	}	
 	
 }

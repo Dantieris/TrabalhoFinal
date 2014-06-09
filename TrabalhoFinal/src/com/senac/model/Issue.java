@@ -4,8 +4,9 @@ import com.senac.lib.Criticidade;
 import com.senac.lib.ListaOrdenada;
 import com.senac.lib.Status;
 import com.senac.lib.Tipo;
+import com.senac.lib.Vetor;
 
-public class Issue {
+public class Issue implements Comparable<Issue> {
 
 	private String titulo;
 	private String descricao;
@@ -14,7 +15,7 @@ public class Issue {
 	private Tipo tipo;
 	private Status status;
 	private Usuario criado;
-	private ListaOrdenada<Evento> listaEventos;
+	private Vetor<Evento> eventos;
 	
 	/**
 	 * Inicializa um objeto Issue recém-criado com titulo, descricao, criticidade e tipo, definidos por parâmetros.
@@ -24,11 +25,13 @@ public class Issue {
 	 * @param criticidade A criticidade da issue.
 	 * @param tipo O tipo da issue.
 	 */
-	public Issue( String titulo, String descricao, Criticidade criticidade, Tipo tipo ) {
+	public Issue( String titulo, String descricao, Criticidade criticidade, Tipo tipo, int dataCriacao) {
 		this.titulo 	 = titulo;
 		this.descricao 	 = descricao;
 		this.criticidade = criticidade;
 		this.tipo 		 = tipo;
+		this.dataCriacao = dataCriacao;
+		this.status		 = status.NOVO;
 	}
 	
 	public String getTitulo() { return titulo; }
@@ -59,6 +62,25 @@ public class Issue {
 	
 	public void setCriado(Usuario criado) { this.criado = criado; }
 	
-	public ListaOrdenada<Evento> getListaEventos() { return listaEventos; }
+	public Vetor<Evento> getListaEventos() { return eventos; }
+	
+	/**
+	 * Implementa uma comparação por criticidade de issues. 
+	 * Retornando maior que 1 se esta issue é maior, 
+	 * retorna 0 se for igual e menor que 1 se for menor.
+	 * 
+	 * @return O resultado da comparação.
+	 */
+	@Override
+	public int compareTo(Issue issue) {
+		if ( this.criticidade.getNivel() < issue.getCriticidade().getNivel() ) {
+			return -1;
+		}
+		if ( this.criticidade.getNivel() > issue.getCriticidade().getNivel() ) {
+			return 1;
+		}
+		
+		return 0;
+	}
 	
 }
