@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.senac.lib.Criticidade;
+import com.senac.model.Issue;
 import com.senac.model.Projeto;
 import com.senac.model.Usuario;
 import static org.mockito.Mockito.*;
@@ -32,7 +35,7 @@ public class ProjetoTest {
 	  */
 	@Test
 	public void testAddDesenvolvedor() {			
-		projeto.addDesenvolvedor(desenvolvedor);
+		projeto.addDesenvolvedor(0, desenvolvedor);
 		assertEquals(projeto.getDesenvolvedor(0).getNome(),"Guilherme");
 	}
 	
@@ -40,11 +43,30 @@ public class ProjetoTest {
 	public void testAddDoisDesenvolvedores(){
 		Usuario desenvolvedor2 = mock(Usuario.class);
 		when(desenvolvedor2.getNome()).thenReturn("Pedrinho");
-		projeto.addDesenvolvedor(this.desenvolvedor);
-		projeto.addDesenvolvedor(desenvolvedor2);		
-		assertEquals(projeto.getDesenvolvedor().getNome(),"Guilherme");
-		assertEquals(projeto.getDesenvolvedor().getNome(),"Pedrinho");
-		
+		projeto.addDesenvolvedor(0,this.desenvolvedor);
+		projeto.addDesenvolvedor(1,desenvolvedor2);		
+		assertEquals(projeto.getDesenvolvedor(0).getNome(),"Guilherme");
+		assertEquals(projeto.getDesenvolvedor(1).getNome(),"Pedrinho");		
 	}
 
+	
+	@Test
+	public void testCompareToProjetoAtualMaiorQueProjetoParametro() {
+		Projeto maior = mock(Projeto.class);
+		when(maior.getNome()).thenReturn("A");
+		Projeto menor = mock(Projeto.class);
+		when(menor.getNome()).thenReturn("B");
+		int comparacao = maior.compareTo(menor);
+		assertTrue( comparacao > 0 );
+	}
+	
+	@Test
+	public void testCompareToProjetoAtualMenorQueProjetoParametro() {
+		Projeto maior = mock(Projeto.class);
+		when(maior.getNome()).thenReturn("Abc");
+		Projeto menor = mock(Projeto.class);
+		when(menor.getNome()).thenReturn("Zdc");
+		int comparacao = menor.compareTo(maior);
+		assertEquals(1, comparacao);		
+	}
 }

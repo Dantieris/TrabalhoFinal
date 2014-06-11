@@ -25,9 +25,15 @@ public class Projeto implements Comparable<Projeto> {
  		this.setDescricao(descricao);
  		this.desenvolvedor = new Vetor<>(0);
  	}
- 	//ignorar este método, passar a utilizar pilha.
- 	public void addDesenvolvedor(Usuario desenvolvedor){
- 		this.desenvolvedor.put(0, desenvolvedor);
+ 	
+ 	/**
+ 	 * Adiciona um desenvolvedor a uma posição especíica do vetor. 
+ 	 * @param indice aonde o desenvolvedor será inserido (gerenciado pelo controller)
+ 	 * @param desenvolvedor a ser inserido no vetor
+ 	 */
+ 	//ignorar este método, passar a utilizar pilha....ou não
+ 	public void addDesenvolvedor(int indice, Usuario desenvolvedor){
+ 		this.desenvolvedor.put(indice, desenvolvedor);
  	}
  	
  	/**
@@ -43,14 +49,18 @@ public class Projeto implements Comparable<Projeto> {
  	 * Retorna o ultimo desenvolvedor do vetor.
  	 * método temporário, será substituido quando passarmos a utilizar pilha
  	 * @return desenvolvedor: Usuario
- 	 */
- 	
+ 	 */ 	
  	public Usuario getDesenvolvedor(){
  		return this.desenvolvedor.pop();
  	}
  	
+ 	
+ 	/**
+ 	 * Comparação por nome do projeto. Trabalha com ordem alfabética
+ 	 * -1 significa que este nome é após o Projeto recebido via parametro (alfabéticamente) 
+ 	 */
 	public int compareTo(Projeto proj){
-		return 0;
+		return this.nome.compareTo(proj.getNome());
 	}
 
 	public Usuario getCriador() {
