@@ -41,9 +41,10 @@ public class ProjetoTest {
 		Usuario desenvolvedor2 = mock(Usuario.class);
 		when(desenvolvedor2.getNome()).thenReturn("Pedrinho");
 		projeto.addDesenvolvedor(this.desenvolvedor);
-		projeto.addDesenvolvedor(desenvolvedor2);
-		assertEquals(projeto.getDesenvolvedor(0).getNome(),"Guilherme");
-		assertEquals(projeto.getDesenvolvedor(0).getNome(),"Pedrinho");
+		projeto.addDesenvolvedor(desenvolvedor2);		
+		assertEquals(projeto.getDesenvolvedor().getNome(),"Guilherme");
+		assertEquals(projeto.getDesenvolvedor().getNome(),"Pedrinho");
+		
 	}
 
 }

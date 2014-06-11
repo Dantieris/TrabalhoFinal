@@ -69,6 +69,18 @@ public class Vetor<T> {
 	}
 	
 	/**
+	 * Comportamento de Pilha, mas servirá para tornar
+	 * o código mais testável.
+	 * temporário, deixará de existir quando passarmos a utilizar
+	 * pilhas p/armazenar desenvolvedores no projeto.
+	 * @return T : retorna o ultimo elemento do vetor.
+	 */
+	public T pop(){		
+		return this.get(this.getLength()-1);
+	}
+	
+	
+	/**
 	 * Aumenta o tamanho do vetor.
 	 * 
 	 * @param tamanho O novo tamanho do vetor.
