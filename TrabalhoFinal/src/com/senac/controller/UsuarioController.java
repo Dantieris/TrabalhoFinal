@@ -1,7 +1,6 @@
 package com.senac.controller;
 
 import com.senac.lib.Vetor;
-import com.senac.lib.exceptions.SemUsuariosCadastradosException;
 import com.senac.model.Usuario;
 
 public class UsuarioController {
@@ -28,13 +27,8 @@ public class UsuarioController {
 	 * e usuarioLogado como o usuário que fecha com o login/senha.
 	 * @param login Uma String com o login do usuário.
 	 * @param senha Uma String com a senha do usuário.
-	 * @throws SemUsuariosCadastradosException Se não possui nenhum usuário cadastrado no sistema.
 	 */
-	public void login(String login, String senha) throws SemUsuariosCadastradosException {
-		if (contadorCadastrados == 0) {
-			throw new SemUsuariosCadastradosException();
-		}
-		
+	public void login(String login, String senha) {
 		for(int i = 0 ; i < cadastrados.getLength() ; i++) {
 			if (cadastrados.get(i).getUsername() == login && cadastrados.get(i).getSenha() == senha ) {
 				setLoggedIn(true);

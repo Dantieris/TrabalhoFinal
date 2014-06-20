@@ -6,7 +6,7 @@ public class UsuarioView {
 
 	private static final Scanner entrada = new Scanner(System.in);
 	
-	public void printTelaLogin() {
+	public static void printTelaLogin() {
 		System.out.println("### Tela de Login ###\n");
 	}
 	
@@ -14,8 +14,8 @@ public class UsuarioView {
 	 * Imprime na tela a mensagem de login, e recebe o login do usuário.
 	 * @return Uma String com o login do usuário.
 	 */
-	public String printUserName() {
-		System.out.println("UserName: ");
+	public static String printUsername() {
+		System.out.print("Username: ");
 		return entrada.next();
 	}
 	
@@ -23,12 +23,12 @@ public class UsuarioView {
 	 * Imprime na tela a mensagem de senha, e recebe a senha do usuário.
 	 * @return Uma String com a senha do usuário.
 	 */
-	public String printSenha() {
-		System.out.println("Senha: ");
+	public static String printSenha() {
+		System.out.print("Senha: ");
 		return entrada.next();
 	}
 	
-	public void printTelaCadastro() {
+	public static void printTelaCadastro() {
 		System.out.println("### Tela de Cadastro ###\n");
 	}
 	
@@ -36,7 +36,7 @@ public class UsuarioView {
 	 * Imprime na tela a mensagem de nome, e recebe o nome do usuário.
 	 * @return Uma String com o nome do usuário.
 	 */
-	public String printName() {
+	public static String printName() {
 		System.out.println("Nome: ");
 		return entrada.nextLine();
 	}
@@ -46,7 +46,7 @@ public class UsuarioView {
 	 * e recebe novamente a senha do usuário, que deve ser igual a senha que ja foi digitada.
 	 * @return Uma String com a senha do usuário.
 	 */
-	public String printConfirmarSenha() {
+	public static String printConfirmarSenha() {
 		System.out.println("Confirme a Senha: ");
 		return entrada.next();
 	}

@@ -1,13 +1,13 @@
 package com.senac.tests.controller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.senac.controller.UsuarioController;
-import com.senac.lib.exceptions.SemUsuariosCadastradosException;
 import com.senac.model.Usuario;
 
 public class UsuarioControllerTest {
@@ -23,8 +23,8 @@ public class UsuarioControllerTest {
 		uc = null;
 	}
 
-	@Test(expected = SemUsuariosCadastradosException.class)
-	public void testLoginSemUsuarioCadastradoLancaExcecao() throws SemUsuariosCadastradosException {
+	@Test(expected = NullPointerException.class)
+	public void testLoginSemUsuarioCadastradoLancaExcecao() throws NullPointerException {
 		uc.login("", "");
 	}
 	
@@ -52,7 +52,7 @@ public class UsuarioControllerTest {
 	}
 	
 	@Test
-	public void testLoginUsuarioCadastradoLoginErradoFalhar() throws SemUsuariosCadastradosException {
+	public void testLoginUsuarioCadastradoLoginErradoFalhar() {
 		Usuario usuario = new Usuario("nome", "login", "senha");
 		uc.addUsuarioCadastrado(usuario);
 		uc.login("errado", "senha");
@@ -62,7 +62,7 @@ public class UsuarioControllerTest {
 	}
 
 	@Test
-	public void testLoginUsuarioCadastradoSenhaErradaFalhar() throws SemUsuariosCadastradosException {
+	public void testLoginUsuarioCadastradoSenhaErradaFalhar() {
 		Usuario usuario = new Usuario("nome", "login", "senha");
 		uc.addUsuarioCadastrado(usuario);
 		uc.login("login", "errada");
@@ -72,7 +72,7 @@ public class UsuarioControllerTest {
 	}
 	
 	@Test
-	public void testLoginUsuarioCadastradoLoginSenhaCorretosSucesso() throws SemUsuariosCadastradosException {
+	public void testLoginUsuarioCadastradoLoginSenhaCorretosSucesso() {
 		Usuario usuario = new Usuario("nome", "login", "senha");
 		uc.addUsuarioCadastrado(usuario);
 		uc.login("login", "senha");
@@ -82,7 +82,7 @@ public class UsuarioControllerTest {
 	}
 	
 	@Test
-	public void testCadastrarCincoUsuariosLogarComTerceiroSucesso() throws SemUsuariosCadastradosException {
+	public void testCadastrarCincoUsuariosLogarComTerceiroSucesso() {
 		Usuario usuario1 = new Usuario("nome1", "username1", "senha");
 		Usuario usuario2 = new Usuario("nome2", "username2", "senha");
 		Usuario usuario3 = new Usuario("nome3", "username3", "senha");
