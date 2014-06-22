@@ -15,7 +15,7 @@ public class Projeto implements Comparable<Projeto> {
  	private ListaOrdenada<Issue> issue;
 	
  	/**
- 	 * Novos objetos Projeto sempre terão:o Criador, nome do projeto, descrição do projeto
+ 	 * Novos objetos Projeto sempre terao:o Criador, nome do projeto, descrição do projeto
  	 * e um vetor de desenvolvedores (iniciando em zero).
  	 * @param criador:Usuario (dono do projeto)
  	 * @param nome:String (nome do projeto)
@@ -30,8 +30,8 @@ public class Projeto implements Comparable<Projeto> {
  	}
  	
  	/**
- 	 * Adiciona um desenvolvedor a uma posição especíica do vetor. 
- 	 * @param indice aonde o desenvolvedor será inserido (gerenciado pelo controller)
+ 	 * Adiciona um desenvolvedor a uma posicao especiica do vetor. 
+ 	 * @param indice aonde o desenvolvedor sera inserido (gerenciado pelo controller)
  	 * @param desenvolvedor a ser inserido no vetor
  	 */
  	//ignorar este método, passar a utilizar pilha....ou não
@@ -40,20 +40,20 @@ public class Projeto implements Comparable<Projeto> {
  	}
  	
  	/**
- 	 * Busca um desenvolvedor em uma posição especifica do vetor.
+ 	 * Busca um desenvolvedor em uma posicao especifica do vetor.
  	 * @param indice
- 	 * @return desenvolvedor(Usuario.class) a que o indice faz referência.
+ 	 * @return desenvolvedor(Usuario.class) a que o indice faz referencia.
  	 */
  	public Usuario getDesenvolvedor(int indice){
  		return this.desenvolvedor.get(indice);
  	}
  	 	
  	/**
- 	 * Comparação por nome do projeto. Trabalha com ordem alfabética
- 	 * -1 significa que este nome é anterior ao Projeto recebido via parametro (alfabéticamente) 
- 	 * +1 significa que o nome do projeto atual é posterior ao do projeto recebido como parametro.
+ 	 * Comparação por nome do projeto. Trabalha com ordem alfabetica
+ 	 * -1 significa que este nome eh anterior ao Projeto recebido via parametro (alfabeticamente) 
+ 	 * +1 significa que o nome do projeto atual eh posterior ao do projeto recebido como parametro.
  	 * 0 significa que ambos tem o mesmo nome. 
- 	 * Passamos a responsabilidade de fazer a comparação para a classe String.
+ 	 * Passamos a responsabilidade de fazer a comparaçao para a classe String.
  	 * 
  	 */
 	public int compareTo(Projeto proj){		
@@ -70,7 +70,7 @@ public class Projeto implements Comparable<Projeto> {
 	
 	/**
 	 * Procura uma Issue na listaOrdenada de Issues, Lança excessões caso a lista esteja vazia, 
-	 * ou a issue buscada não seja encontrada.
+	 * ou a issue buscada nao seja encontrada.
 	 * @param issue
 	 * @throws ListaVaziaException
 	 * @throws ItemNaoEncontradoException
