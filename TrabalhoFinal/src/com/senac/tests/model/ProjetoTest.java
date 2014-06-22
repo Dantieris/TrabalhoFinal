@@ -7,6 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import com.senac.lib.Criticidade;
+import com.senac.lib.Tipo;
+import com.senac.lib.exceptions.ItemNaoEncontradoException;
+import com.senac.lib.exceptions.ListaVaziaException;
+import com.senac.model.Issue;
 import com.senac.model.Projeto;
 import com.senac.model.Usuario;
 import static org.mockito.Mockito.*;
@@ -14,17 +19,23 @@ public class ProjetoTest {
 	Projeto projeto;
 	Usuario criador;
 	Usuario desenvolvedor;
+	Issue issue;
 	@Before
 	public void setUp() throws Exception {
 		this.criador = mock(Usuario.class);
 		this.desenvolvedor = mock(Usuario.class);
 		when(this.desenvolvedor.getNome()).thenReturn("Guilherme");
+		
+		this.issue = new Issue("Titulo", "descricao", Criticidade.LOW, Tipo.BUG, 12345);		
+		
 		this.projeto = new Projeto(criador, "Projeto Escola", "Projeto de uma escola totalmente online");
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		projeto = null;
+		this.projeto = null;
+		this.desenvolvedor = null;
+		this.issue = null;
 	}
 
 	 /**
@@ -71,4 +82,24 @@ public class ProjetoTest {
 		assertTrue(comparacao == 0);
 	}
 	
+	@Test
+	public void testAddIssueEGetIssue(){
+		
+		this.projeto.addIssue(this.issue);						
+		
+				try {
+					assertEquals(issue, this.projeto.getIssue(issue));
+				} catch (ListaVaziaException e) {
+					// TODO Auto-generated catch block
+					fail("lista vazia");
+					e.printStackTrace();
+				} catch (ItemNaoEncontradoException e) {
+					// TODO Auto-generated catch block
+					fail("item nao encontrado");
+					e.printStackTrace();
+				}
+			
+		
+		
+	}
 }

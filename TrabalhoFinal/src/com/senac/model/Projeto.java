@@ -3,6 +3,8 @@ package com.senac.model;
 import com.senac.model.Usuario;
 import com.senac.lib.Vetor;
 import com.senac.lib.ListaOrdenada;
+import com.senac.lib.exceptions.ItemNaoEncontradoException;
+import com.senac.lib.exceptions.ListaVaziaException;
 
 public class Projeto implements Comparable<Projeto> {
 	
@@ -24,6 +26,7 @@ public class Projeto implements Comparable<Projeto> {
  		this.setNome(nome);
  		this.setDescricao(descricao);
  		this.desenvolvedor = new Vetor<>(0);
+ 		this.issue = new ListaOrdenada<Issue>();
  	}
  	
  	/**
@@ -57,6 +60,25 @@ public class Projeto implements Comparable<Projeto> {
 		return this.nome.compareToIgnoreCase(proj.getNome());
 	}
 
+	/**
+	 * Insere uma issue na listaOrdenada de Issues
+	 * @param issue
+	 */
+	public void addIssue(Issue issue){
+		this.issue.inserir(issue);
+	}
+	
+	/**
+	 * Procura uma Issue na listaOrdenada de Issues, Lança excessões caso a lista esteja vazia, 
+	 * ou a issue buscada não seja encontrada.
+	 * @param issue
+	 * @throws ListaVaziaException
+	 * @throws ItemNaoEncontradoException
+	 */
+	public Issue getIssue(Issue issue) throws ListaVaziaException, ItemNaoEncontradoException{
+		return this.issue.procura(issue).getValor();
+	}
+	
 	public Usuario getCriador() {
 		return criador;
 	}
