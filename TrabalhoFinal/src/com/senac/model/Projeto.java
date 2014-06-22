@@ -13,7 +13,7 @@ public class Projeto implements Comparable<Projeto> {
  	private ListaOrdenada<Issue> issue;
 	
  	/**
- 	 * Novos objetos Projeto sempre terã:o Criador, nome do projeto, descrição do projeto
+ 	 * Novos objetos Projeto sempre terão:o Criador, nome do projeto, descrição do projeto
  	 * e um vetor de desenvolvedores (iniciando em zero).
  	 * @param criador:Usuario (dono do projeto)
  	 * @param nome:String (nome do projeto)
@@ -44,23 +44,17 @@ public class Projeto implements Comparable<Projeto> {
  	public Usuario getDesenvolvedor(int indice){
  		return this.desenvolvedor.get(indice);
  	}
- 	
- 	/**
- 	 * Retorna o ultimo desenvolvedor do vetor.
- 	 * método temporário, será substituido quando passarmos a utilizar pilha
- 	 * @return desenvolvedor: Usuario
- 	 */ 	
- 	public Usuario getDesenvolvedor(){
- 		return this.desenvolvedor.pop();
- 	}
- 	
- 	
+ 	 	
  	/**
  	 * Comparação por nome do projeto. Trabalha com ordem alfabética
- 	 * -1 significa que este nome é após o Projeto recebido via parametro (alfabéticamente) 
+ 	 * -1 significa que este nome é anterior ao Projeto recebido via parametro (alfabéticamente) 
+ 	 * +1 significa que o nome do projeto atual é posterior ao do projeto recebido como parametro.
+ 	 * 0 significa que ambos tem o mesmo nome. 
+ 	 * Passamos a responsabilidade de fazer a comparação para a classe String.
+ 	 * 
  	 */
-	public int compareTo(Projeto proj){
-		return this.nome.compareTo(proj.getNome());
+	public int compareTo(Projeto proj){		
+		return this.nome.compareToIgnoreCase(proj.getNome());
 	}
 
 	public Usuario getCriador() {

@@ -6,8 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.senac.lib.Criticidade;
-import com.senac.model.Issue;
+
 import com.senac.model.Projeto;
 import com.senac.model.Usuario;
 import static org.mockito.Mockito.*;
@@ -51,22 +50,25 @@ public class ProjetoTest {
 
 	
 	@Test
-	public void testCompareToProjetoAtualMaiorQueProjetoParametro() {
-		Projeto maior = mock(Projeto.class);
-		when(maior.getNome()).thenReturn("A");
-		Projeto menor = mock(Projeto.class);
-		when(menor.getNome()).thenReturn("B");
-		int comparacao = maior.compareTo(menor);
+	public void testCompareToProjetoNomePosteriorAoProjetoParametro() {			
+		Projeto nomeAnterior = new Projeto(this.criador, "A", "descricao");
+		Projeto nomePosterior = new Projeto(this.criador, "B", "descricao");
+		int comparacao = nomePosterior.compareTo(nomeAnterior);//tem que retornar um valor superior a zero				
 		assertTrue( comparacao > 0 );
 	}
 	
 	@Test
-	public void testCompareToProjetoAtualMenorQueProjetoParametro() {
-		Projeto maior = mock(Projeto.class);
-		when(maior.getNome()).thenReturn("Abc");
-		Projeto menor = mock(Projeto.class);
-		when(menor.getNome()).thenReturn("Zdc");
-		int comparacao = menor.compareTo(maior);
-		assertEquals(1, comparacao);		
+	public void testCompareToProjetoNomeAnteriorAoProjetoParametro() {
+		Projeto nomeAnterior = new Projeto(this.criador, "A", "descricao");
+		Projeto nomePosterior = new Projeto(this.criador, "B", "descricao");
+		int comparacao = nomeAnterior.compareTo(nomePosterior);//tem que retonrnar um valor menor que zero				
+		assertTrue(comparacao < 0);		
 	}
+	
+	@Test
+	public void testCompareToDuasStringsIguais(){
+		int comparacao = this.projeto.compareTo(this.projeto);//tem que retornar zero
+		assertTrue(comparacao == 0);
+	}
+	
 }
