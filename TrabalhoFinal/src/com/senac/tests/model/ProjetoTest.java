@@ -83,23 +83,59 @@ public class ProjetoTest {
 	}
 	
 	@Test
-	public void testAddIssueEGetIssue(){
-		
-		this.projeto.addIssue(this.issue);						
-		
-				try {
-					assertEquals(issue, this.projeto.getIssue(issue));
-				} catch (ListaVaziaException e) {
-					// TODO Auto-generated catch block
-					fail("lista vazia");
-					e.printStackTrace();
-				} catch (ItemNaoEncontradoException e) {
-					// TODO Auto-generated catch block
-					fail("item nao encontrado");
-					e.printStackTrace();
-				}
-			
-		
-		
+	public void testAddIssueEGetIssue(){			
+		this.projeto.addIssue(this.issue);												
+		try {
+			assertEquals(issue, this.projeto.getIssue(issue));					
+		} catch (ListaVaziaException e) {
+			// TODO Auto-generated catch block
+			fail("lista vazia");
+			e.printStackTrace();
+		} catch (ItemNaoEncontradoException e) {
+			// TODO Auto-generated catch block
+			fail("item nao encontrado");
+			e.printStackTrace();
+		}
 	}
+	
+	
+	@Test 
+	public void testAddDuasIssues(){
+		Issue issue2 = new Issue("Titulo2", "descricao2", Criticidade.CRITICAL, Tipo.BUG, 54321);
+		this.projeto.addIssue(this.issue);
+		this.projeto.addIssue(issue2);
+		try {
+			assertEquals(issue, this.projeto.getIssue(issue));
+			assertEquals(issue2, this.projeto.getIssue(issue2));
+		} catch (ListaVaziaException e) {
+			// TODO Auto-generated catch block
+			fail("lista vazia");
+			e.printStackTrace();
+		} catch (ItemNaoEncontradoException e) {
+			// TODO Auto-generated catch block
+			fail("item nao encontrado");
+			e.printStackTrace();
+		}
+	}
+	
+	@Test 
+	public void testAddDuasIssuesBuscarApenasASegunda(){
+		Issue issue2 = new Issue("Titulo2", "descricao2", Criticidade.CRITICAL, Tipo.BUG, 54321);
+		Issue issue3 = new Issue("Titulo3", "descricao3", Criticidade.MEDIUM, Tipo.ENHANCEMENT, 321123);
+		this.projeto.addIssue(this.issue);
+		this.projeto.addIssue(issue2);
+		this.projeto.addIssue(issue3);
+		try {
+			assertEquals(issue2, this.projeto.getIssue(issue2));			
+		} catch (ListaVaziaException e) {
+			// TODO Auto-generated catch block
+			fail("lista vazia");
+			e.printStackTrace();
+		} catch (ItemNaoEncontradoException e) {
+			// TODO Auto-generated catch block
+			fail("item nao encontrado");
+			e.printStackTrace();
+		}
+	}
+	
 }
