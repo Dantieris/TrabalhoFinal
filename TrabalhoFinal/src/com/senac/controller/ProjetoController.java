@@ -17,6 +17,17 @@ public class ProjetoController {
 	}
 	
 	/**
+	 * O seguinte construtor deve ser utilizado quando o programa estiver finalizado.
+	 * @param userControll
+	 */
+	public ProjetoController(UsuarioController userControll){
+		this.listaDeProjetos = new ListaOrdenada<Projeto>();
+		this.pview = new ProjetoView();
+		this.userControll = userControll;
+	}
+	
+	
+	/**
 	 * Insere um projeto na lista de projetos
 	 * @param projeto a ser inserido
 	 */
@@ -59,6 +70,18 @@ public class ProjetoController {
 			this.pview.exibir("Infelizmente nao foi possivel encontrar o projeto.");			
 			//e.printStackTrace();
 		}					
+	}
+	
+	/**
+	 * Recebe informacoes do usuario e instancia um novo projeto
+	 * em seguida o insere na lista de projetos 
+	 */
+	public void preencherNovoProjeto(){
+		this.pview.exibir("Bem vindo ao Cadastro de Projetos");
+		String nomeProj = this.pview.receber("Por favor Insira o nome do projeto: ");
+		String descricaoProj = this.pview.receber("Por favor Insira uma descricao para o projeto: ");
+		this.projeto = new Projeto(this.userControll.getUsuarioLogado(), nomeProj, descricaoProj);
+		this.addProjeto(this.projeto);
 	}
 	
 	
