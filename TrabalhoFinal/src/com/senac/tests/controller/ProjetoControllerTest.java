@@ -13,12 +13,18 @@ public class ProjetoControllerTest {
 	
 	private ProjetoController projController;
 	private Projeto projeto;
-	
+	private Projeto proj;
+	private Usuario desenvolvedor;
 	
 	@Before
 	public void setUp() throws Exception {
 		this.projController = new ProjetoController();
 		this.projeto = mock(Projeto.class);
+		this.desenvolvedor = mock(Usuario.class);
+		this.proj = new Projeto(this.desenvolvedor, "Proj", "projeto teste");
+		
+		when(this.desenvolvedor.getNome()).thenReturn("Guilherme");
+		
 	}
 
 	@After
@@ -27,8 +33,42 @@ public class ProjetoControllerTest {
 	}
 
 	@Test
-	public void testCriarProjeto() {
-		this.projController.addProjeto(this.projeto);
+	public void testAdicionarProjetoAListaERetornarProjeto() {		
+		this.projController.addProjeto(proj);
+		
+		assertEquals(proj, this.projController.getProjeto(proj));
 	}
+	
+	@Test
+	public void testAdicionarTresProjetosAListaERetornarSegundoProjeto() {		
+		Projeto proj2 = new Projeto(this.desenvolvedor, "Proj2", "projeto teste2");
+		Projeto proj3 = new Projeto(this.desenvolvedor, "Proj3", "projeto teste3");
+		this.projController.addProjeto(proj);
+		this.projController.addProjeto(proj2);
+		this.projController.addProjeto(proj3);
+		
+		assertEquals(proj2, this.projController.getProjeto(proj2));
+	}
+	
 
+	@Test
+	public void testRemoverProjetoDaListaVazia(){		
+		this.projController.addProjeto(proj);
+		this.projController.remove(proj);
+		assertEquals(null, this.projController.getProjeto(proj));
+	}
+	
+	
+	@Test
+	public void testRemoverProjetoDaListaPreenchida(){		
+		Projeto proj2 = new Projeto(this.desenvolvedor, "Proj2", "projeto teste2");
+		Projeto proj3 = new Projeto(this.desenvolvedor, "Proj3", "projeto teste3");
+		this.projController.addProjeto(proj2);
+		this.projController.addProjeto(proj);
+		this.projController.addProjeto(proj3);
+		this.projController.remove(proj);
+		assertEquals(null, this.projController.getProjeto(proj));
+	}
+	
+	
 }

@@ -57,7 +57,7 @@ public class Projeto implements Comparable<Projeto> {
  	 * 
  	 */
 	public int compareTo(Projeto proj){		
-		return this.nome.compareToIgnoreCase(proj.getNome());
+		return this.getNome().compareToIgnoreCase(proj.getNome());
 	}
 
 	/**
