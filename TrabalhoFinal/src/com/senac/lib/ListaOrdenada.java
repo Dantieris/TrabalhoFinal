@@ -173,8 +173,7 @@ public class ListaOrdenada<T extends Comparable<T>>
 		if (isVazia())
 			return false;
 		if (iter != null && iter.getProximo() != null)
-			return true;
-		else
+			return true;		
 			return false;
 	}
 	
