@@ -6,8 +6,9 @@ import com.senac.lib.ListaOrdenada;
 import com.senac.lib.exceptions.ItemNaoEncontradoException;
 import com.senac.lib.exceptions.ListaVaziaException;
 
-public class Projeto implements Comparable<Projeto> {
-	
+public class Projeto implements Comparable<Projeto>{
+	private static int ID_COUNT = 1; 
+	private int id;
 	private Usuario criador;
 	private Vetor<Usuario> desenvolvedor;
 	private String nome;
@@ -22,6 +23,8 @@ public class Projeto implements Comparable<Projeto> {
  	 * @param descricao:String (descrição do projeto)
  	 */
  	public Projeto(Usuario criador, String nome, String descricao){
+ 		ID_COUNT ++;
+ 		this.id = ID_COUNT;
  		this.setCriador(criador);
  		this.setNome(nome);
  		this.setDescricao(descricao);
@@ -47,7 +50,17 @@ public class Projeto implements Comparable<Projeto> {
  	public Usuario getDesenvolvedor(int indice){
  		return this.desenvolvedor.get(indice);
  	}
+ 	
  	 	
+ 	/**
+ 	 * Retorna o tamanho da lista de desenvolvedores.
+ 	 * @return
+ 	 */
+ 	public int getListaDesenvolvedorLength(){
+ 		return this.desenvolvedor.getLength();
+ 	}
+ 	
+ 	
  	/**
  	 * Comparação por nome do projeto. Trabalha com ordem alfabetica
  	 * -1 significa que este nome eh anterior ao Projeto recebido via parametro (alfabeticamente) 
@@ -102,7 +115,10 @@ public class Projeto implements Comparable<Projeto> {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
+	public int getId(){
+		return this.id;
+	}
 	
 	
 	

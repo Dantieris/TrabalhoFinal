@@ -2,6 +2,8 @@ package com.senac.controller;
 
 import com.senac.lib.Vetor;
 import com.senac.model.Usuario;
+import com.senac.view.UsuarioView;
+
 
 public class UsuarioController {
 
@@ -9,6 +11,7 @@ public class UsuarioController {
 	private Vetor<Usuario> cadastrados;
 	private int contadorCadastrados;
 	private boolean loggedIn;
+	private UsuarioView uView;
 	
 	/**
 	 * Inicializa um objeto UsuarioController recém-criado com a configuração padrão.
@@ -17,6 +20,7 @@ public class UsuarioController {
 		cadastrados = new Vetor<Usuario>();
 		loggedIn = false;
 		contadorCadastrados = 0;
+		this.uView = new UsuarioView();
 	}
 	
 	/**
@@ -110,5 +114,12 @@ public class UsuarioController {
 		addUsuarioCadastrado( new Usuario(nome, username, senha) );
 	}
 	
+	/**
+	 * Exibe o nome do usuario
+	 * @param usuario
+	 */
+	public void exibirNomeusuario(Usuario usuario){
+		this.uView.exibirNome(usuario.getNome());
+	}
 	
 }

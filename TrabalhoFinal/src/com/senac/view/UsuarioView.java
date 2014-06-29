@@ -50,4 +50,10 @@ public class UsuarioView {
 		System.out.println("Confirme a Senha: ");
 		return entrada.next();
 	}
+	
+	
+	public void exibirNome(String nome){
+		System.out.println("Nome: " + nome);
+	}
+	
 }

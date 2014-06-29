@@ -138,4 +138,18 @@ public class ProjetoTest {
 		}
 	}
 	
+	
+	@Test
+	public void testRetornarLengthListaDesenvolvedoresVazia(){
+		assertEquals(0,this.projeto.getListaDesenvolvedorLength());
+	}
+	@Test
+	public void testRetornaLengthListaDesenvolvedores(){
+		this.projeto.addDesenvolvedor(0, desenvolvedor);
+		this.projeto.addDesenvolvedor(1, desenvolvedor);
+		this.projeto.addDesenvolvedor(2, desenvolvedor);
+		assertEquals(3,this.projeto.getListaDesenvolvedorLength());		
+	}
+		
+	
 }
