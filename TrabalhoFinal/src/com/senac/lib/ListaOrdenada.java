@@ -1,5 +1,7 @@
 package com.senac.lib;
 
+import java.util.Iterator;
+
 import com.senac.lib.exceptions.ItemNaoEncontradoException;
 import com.senac.lib.exceptions.ListaVaziaException;
 
@@ -8,10 +10,18 @@ import com.senac.lib.exceptions.ListaVaziaException;
  *
  * @param <T> O tipo da lista, deve implementar a interface Comparable com o próprio tipo.
  */
-public class ListaOrdenada<T extends Comparable<T>> {
+public class ListaOrdenada<T extends Comparable<T>> 
+							implements Iterable<T>,
+							Iterator<T>{
 
 	private Nodo<T> head;
 	private Nodo<T> tail;
+	private Nodo<T> iter;
+	
+	public ListaOrdenada() {
+		if (!isVazia())
+			iter.setProximo(head);
+	}
 	
 	/**
 	 * Acessa o nodo head da lista.
@@ -150,5 +160,45 @@ public class ListaOrdenada<T extends Comparable<T>> {
 		nodo.getAnterior().setProximo(nodo.getProximo());
 		nodo.getProximo().setAnterior(nodo.getAnterior());
 	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public Iterator<T> iterator() {
+		return this;
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public boolean hasNext() {
+		if (isVazia())
+			return false;
+		if (iter == null)
+			return false;
+		else
+			return true;
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public T next() {
+		if (iter.getProximo() != null) {
+			iter = iter.getProximo();
+			return iter.getAnterior().getValor();
+		}
+		else 
+			return iter.getValor();
+	}
+
+	/**
+	 * Método não implementado. Utilizar remover(T valor);
+	 */
+	@Override
+	public void remove() {}
 		
 }

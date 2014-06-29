@@ -1,7 +1,6 @@
 package com.senac.tests.lib;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -122,5 +121,25 @@ public class ListaOrdenadaTest {
 		lista.remover(4);
 		lista.procura(4);
 	}
+	
+	@Test
+	public void testHasNextRetornaFalseComListaVazia() {
+		assertFalse(lista.hasNext());
+	}
+	
+	@Test
+	public void testHasNextRetornaTrueListaComUmItem() {
+		lista.inserir(1);
+		
+		assertTrue( lista.hasNext() );
+	}
+	
+	@Test
+	public void testNextRetornaValorNodo() {
+		lista.inserir(1);
+		
+		assertEquals( (Integer) 1, lista.next());
+	}
+	
 	
 }
