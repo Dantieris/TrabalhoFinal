@@ -27,8 +27,8 @@ public class ListaOrdenadaTest {
 	public void testInserirComListaVaziaColocaNodoNaHeadETail() {
 		lista.inserir(1);
 		
-		assertTrue( (Integer) 1 == lista.getHead().getValor() &&
-					(Integer) 1 == lista.getTail().getValor() );
+		assertTrue( lista.getHead().getValor().equals(1) &&
+					lista.getTail().getValor().equals(1) );
 	}
 	
 	@Test
@@ -36,8 +36,8 @@ public class ListaOrdenadaTest {
 		lista.inserir(1);
 		lista.inserir(2);
 		
-		assertTrue( (Integer) 1 == lista.getHead().getValor() &&
-					(Integer) 2 == lista.getTail().getValor() );
+		assertTrue( lista.getHead().getValor().equals(1) &&
+					lista.getTail().getValor().equals(2) );
 	}
 	
 	@Test
@@ -46,9 +46,9 @@ public class ListaOrdenadaTest {
 		lista.inserir(1);
 		lista.inserir(2);
 		
-		assertTrue( (Integer) 1 == lista.getHead().getValor() && 
-					(Integer) 2 == lista.getHead().getProximo().getValor() &&
-					(Integer) 3 == lista.getTail().getValor() );
+		assertTrue( lista.getHead().getValor().equals(1) && 
+					lista.getHead().getProximo().getValor().equals(2) &&
+					lista.getTail().getValor().equals(3) );
 	}
 
 	@Test

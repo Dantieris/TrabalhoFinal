@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ConsoleView {
 
-	protected static Scanner ler = new Scanner(System.in);
+	protected final static Scanner ler = new Scanner(System.in);
 	
 	
 	public void exibir(String mensagem){
