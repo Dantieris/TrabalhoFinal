@@ -18,9 +18,8 @@ public class ListaOrdenada<T extends Comparable<T>>
 	private Nodo<T> tail;
 	private Nodo<T> iter;
 	
-	public ListaOrdenada() {
-		if (!isVazia())
-			iter.setProximo(head);
+	public ListaOrdenada() {		
+			iter = head;
 	}
 	
 	/**
@@ -85,7 +84,11 @@ public class ListaOrdenada<T extends Comparable<T>>
 	 * @return Verdadeiro se a lista estiver vazia, falso senão.
 	 */
 	private boolean isVazia() {
-		return head == null;
+		if(head == null){
+			return true;
+		}else{
+			return false;
+		}		
 	}
 	
 	/**
@@ -173,14 +176,22 @@ public class ListaOrdenada<T extends Comparable<T>>
 	 * 
 	 */
 	@Override
-	public boolean hasNext() {
-		if (isVazia())
+	/*public boolean hasNext() {
+		if (isVazia()){
 			return false;
-		if (iter == null)
+		}
+		if (iter == null){
 			return false;
-		else
+		}
+		if(iter.getProximo() == null){
+			return false;
+		}		
 			return true;
-	}
+	}*/
+	
+	public boolean hasNext () { 
+		   return (iter != null && iter.getProximo() != null);
+		}
 
 	/**
 	 * 

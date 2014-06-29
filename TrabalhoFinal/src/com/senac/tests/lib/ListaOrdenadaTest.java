@@ -131,7 +131,8 @@ public class ListaOrdenadaTest {
 	public void testHasNextRetornaTrueListaComUmItem() {
 		lista.inserir(1);
 		
-		assertTrue( lista.hasNext() );
+		assertEquals(true, lista.hasNext());
+		//assertTrue( lista.hasNext() );
 	}
 	
 	@Test
