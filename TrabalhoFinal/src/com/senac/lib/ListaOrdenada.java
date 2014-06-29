@@ -170,10 +170,12 @@ public class ListaOrdenada<T extends Comparable<T>>
 	}
 	
 	public boolean hasNext () { 
-		if (isVazia())
+		if (isVazia()){
 			return false;
-		if (iter != null && iter.getProximo() != null)
+		}
+		if (iter != null && iter.getProximo() != null){
 			return true;		
+		}
 			return false;
 	}
 	

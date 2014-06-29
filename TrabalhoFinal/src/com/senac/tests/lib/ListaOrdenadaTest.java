@@ -154,6 +154,21 @@ public class ListaOrdenadaTest {
 		assertEquals( (Integer) 3, lista.next());
 	}
 	
-	
+	//Apenas para debugar, nao e um teste real
+	@Test
+	public void testForEach(){
+		lista.inserir(1);
+		lista.inserir(2);
+		lista.inserir(3);
+		lista.inserir(4);
+		lista.inserir(5);
+		lista.inserir(6);
+		lista.inserir(7);
+		lista.inserir(8);
+		
+		for(int i: lista){
+			System.out.println(i);
+		}
+	}
 	
 }
