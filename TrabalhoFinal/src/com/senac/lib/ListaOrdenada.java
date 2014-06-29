@@ -18,10 +18,6 @@ public class ListaOrdenada<T extends Comparable<T>>
 	private Nodo<T> tail;
 	private Nodo<T> iter;
 	
-	public ListaOrdenada() {		
-			iter = head;
-	}
-	
 	/**
 	 * Acessa o nodo head da lista.
 	 * @return O head da lista.
@@ -47,6 +43,7 @@ public class ListaOrdenada<T extends Comparable<T>>
 		if ( isVazia() ) {
 			this.head = novo;
 			this.tail = novo;
+			this.iter = head;
 		}
 		else {
 			Nodo<T> nodo = procuraProximo(valor);
@@ -171,40 +168,29 @@ public class ListaOrdenada<T extends Comparable<T>>
 	public Iterator<T> iterator() {
 		return this;
 	}
-
-	/**
-	 * 
-	 */
-	@Override
-	/*public boolean hasNext() {
-		if (isVazia()){
-			return false;
-		}
-		if (iter == null){
-			return false;
-		}
-		if(iter.getProximo() == null){
-			return false;
-		}		
-			return true;
-	}*/
 	
 	public boolean hasNext () { 
-		   return (iter != null && iter.getProximo() != null);
-		}
-
-	/**
-	 * 
-	 */
-	@Override
-	public T next() {
-		if (iter.getProximo() != null) {
-			iter = iter.getProximo();
-			return iter.getAnterior().getValor();
-		}
-		else 
-			return iter.getValor();
+		if (isVazia())
+			return false;
+		if (iter != null && iter.getProximo() != null)
+			return true;
+		else
+			return false;
 	}
+	
+	public T next(){
+		if(iter.equals(head)){
+			iter = iter.getProximo();
+			return this.head.getValor();
+		}
+		
+		if(hasNext()) {
+			iter = iter.getProximo();
+			return iter.getValor();
+		}
+		return null;
+
+	}	
 
 	/**
 	 * Método não implementado. Utilizar remover(T valor);

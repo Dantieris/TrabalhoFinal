@@ -128,11 +128,10 @@ public class ListaOrdenadaTest {
 	}
 	
 	@Test
-	public void testHasNextRetornaTrueListaComUmItem() {
+	public void testHasNextRetornaFalseListaComUmItem() {
 		lista.inserir(1);
 		
-		assertEquals(true, lista.hasNext());
-		//assertTrue( lista.hasNext() );
+		assertFalse( lista.hasNext() );
 	}
 	
 	@Test
@@ -140,6 +139,19 @@ public class ListaOrdenadaTest {
 		lista.inserir(1);
 		
 		assertEquals( (Integer) 1, lista.next());
+	}
+	
+	@Test
+	public void testNextRetornaValorTerceiroItem() {
+		lista.inserir(1);
+		lista.inserir(2);
+		lista.inserir(3);
+		lista.inserir(4);
+		
+		lista.getHead();
+		lista.next();
+		
+		assertEquals( (Integer) 3, lista.next());
 	}
 	
 	
