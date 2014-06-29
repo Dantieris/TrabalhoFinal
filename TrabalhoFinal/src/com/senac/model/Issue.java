@@ -147,8 +147,8 @@ public class Issue implements Comparable<Issue> {
 		if ( this.criticidade.getNivel() > issue.getCriticidade().getNivel() ) {
 			return 1;
 		}
-		
 		return 0;
+		
 	}
 
 	/**

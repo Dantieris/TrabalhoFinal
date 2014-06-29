@@ -34,7 +34,7 @@ public class UsuarioController {
 	 */
 	public void login(String login, String senha) {
 		for(int i = 0 ; i < cadastrados.getLength() ; i++) {
-			if (cadastrados.get(i).getUsername() == login && cadastrados.get(i).getSenha() == senha ) {
+			if (cadastrados.get(i).getUsername().equals(login) && cadastrados.get(i).getSenha().equals(senha) ) {
 				setLoggedIn(true);
 				setUsuarioLogado(cadastrados.get(i));
 			}
