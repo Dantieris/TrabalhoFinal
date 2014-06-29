@@ -131,15 +131,22 @@ public class ListaOrdenadaTest {
 	public void testHasNextRetornaFalseListaComUmItem() {
 		lista.inserir(1);
 		
+<<<<<<< HEAD
 		assertFalse( lista.hasNext() );
+=======
+		assertEquals(lista.getHead(), lista.getTail());
+		assertEquals(null, lista.getHead().getProximo());		
+		assertEquals(false, lista.hasNext());
+		//assertTrue( lista.hasNext() );
+>>>>>>> 34d8e6088998c5071374231a405c5c2c2658ea3f
 	}
 	
-	@Test
+	/*@Test
 	public void testNextRetornaValorNodo() {
 		lista.inserir(1);
 		
 		assertEquals( (Integer) 1, lista.next());
-	}
+	}*/
 	
 	@Test
 	public void testNextRetornaValorTerceiroItem() {
