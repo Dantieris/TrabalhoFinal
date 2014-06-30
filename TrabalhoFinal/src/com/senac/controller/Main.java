@@ -1,5 +1,5 @@
+package com.senac.controller;
 
-import com.senac.controller.*;
 
 
 public class Main {
