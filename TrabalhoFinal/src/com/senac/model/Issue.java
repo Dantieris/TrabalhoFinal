@@ -176,11 +176,11 @@ public class Issue implements Comparable<Issue> {
 	 * @return Uma String com as informações da issue.
 	 */
 	public String toString() {
-		return getTitulo() +"-"+
-				getDescricao() +"-"+ 
-				getStatus() +"-"+ 
-				getCriticidade() +"-"+ 
-				getTipo() +"-"+ 
-				getDataCriacao();
+		return (getTitulo() +" "+
+				getDescricao() +" - "+ 
+				getStatus().getDescricao() +" - "+ 
+				getCriticidade().getDescricao() +" - "+ 
+				getTipo().getDescricao() +" - "+ 
+				getDataCriacao()).replace("[", "").replace("]", "");
 	}
 }

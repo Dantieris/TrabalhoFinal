@@ -4,7 +4,10 @@ import com.senac.lib.Criticidade;
 import com.senac.lib.ListaOrdenada;
 import com.senac.lib.Tipo;
 import com.senac.lib.Vetor;
+import com.senac.lib.exceptions.ItemNaoEncontradoException;
+import com.senac.lib.exceptions.ListaVaziaException;
 import com.senac.model.Issue;
+import com.senac.model.Projeto;
 import com.senac.view.IssueView;
 
 /**
@@ -111,4 +114,37 @@ public class IssueController {
 		return vetor;
 	}
 	
+	/**
+	 * 
+	 * @param issue
+	 * @return
+	 */
+	public Issue getIssue(Issue issue) {
+		try {
+			return this.listaDeIssues.procura(issue).getValor();
+		} 
+		catch (ListaVaziaException e) {
+			this.iview.exibir("A lista de Issues se encontra vazia.");
+		} 
+		catch (ItemNaoEncontradoException e) {
+			this.iview.exibir("Infelizmente nao foi possivel encontrar a issue.");
+		}
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param issue
+	 */
+	public void remove(Issue issue) {
+		try {
+			this.listaDeIssues.remover(issue);			
+		} catch (ListaVaziaException e) {
+			this.iview.exibir("A lista de Issues se encontra vazia.");			
+			//e.printStackTrace();
+		} catch (ItemNaoEncontradoException e) {
+			this.iview.exibir("Infelizmente nao foi possivel encontrar a issue.");			
+			//e.printStackTrace();
+		}					
+	}
 }

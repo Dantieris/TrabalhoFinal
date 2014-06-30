@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.senac.lib.Criticidade;
+import com.senac.lib.Tipo;
 import com.senac.model.Evento;
 import com.senac.model.Issue;
 
@@ -65,6 +66,12 @@ public class IssueTest {
 		
 		assertTrue( evento1 == issue.getEvento(0) &&
 					evento2 == issue.getEvento(1) );
+	}
+	
+	@Test
+	public void testToStringRetornaFormatoCorreto() {
+		Issue issue = new Issue("Titulo", "Descricao" , Criticidade.CRITICAL, Tipo.BUG, 1052014);
+		assertEquals("Titulo Descricao - NOVO - CRITICAL - BUG - 1052014", issue.toString());
 	}
 
 }
