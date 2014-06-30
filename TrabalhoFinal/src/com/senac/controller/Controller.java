@@ -21,7 +21,7 @@ public class Controller {
 		this.logarUsuario();
 		
 		this.pc.exibirTodosProjetos();
-		this.tratarEscolhaProjetos(this.menuProjetos());		
+		this.gerenciarMenu();		
 	}
 		
 	
@@ -34,8 +34,16 @@ public class Controller {
 		this.cv.exibir("Usuario logado: " + this.uc.getUsuarioLogado().getNome());
 	}
 	
+	private void gerenciarMenu(){
+		int opcao;
+		do{
+			opcao = this.menuProjetos();
+			this.tratarEscolhaProjetos(opcao);
+		}while(opcao != 0);
+	}
 	
 	private int menuProjetos(){
+		this.cv.exibir("0 - Sair.");
 		this.cv.exibir("1 - Adicionar novo projeto.");
 		this.cv.exibir("2 - Editar Projeto Existente. ");
 		this.cv.exibir("3 - Exibir Projetos Existente. ");
@@ -50,9 +58,11 @@ public class Controller {
 			case 3:
 				this.pc.exibirTodosProjetos();
 				break;
+			case 0:
+				this.cv.exibir("Deslogando...");
+				break;
 			default:
-				this.cv.exibir("Opcao invalida");
-				this.menuProjetos();
+				this.cv.exibir("Opcao invalida");				
 				break;
 		}
 	}
