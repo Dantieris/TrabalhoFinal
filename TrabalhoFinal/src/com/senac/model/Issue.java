@@ -171,4 +171,16 @@ public class Issue implements Comparable<Issue> {
 		return eventos.get(indice);
 	}
 	
+	/**
+	 * Transforma as informações da issue em uma String.
+	 * @return Uma String com as informações da issue.
+	 */
+	public String toString() {
+		return getTitulo() +"-"+
+				getDescricao() +"-"+ 
+				getStatus() +"-"+ 
+				getCriticidade() +"-"+ 
+				getTipo() +"-"+ 
+				getDataCriacao();
+	}
 }
