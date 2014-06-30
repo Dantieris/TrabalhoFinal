@@ -86,7 +86,10 @@ public class ProjetoController {
 		this.addProjeto(this.projeto);
 	}
 	
-	
+	/**
+	 * Lista as informacoes principais de um projeto
+	 * @param proj
+	 */
 	private void exibirProjeto(Projeto proj){		
 		this.pview.exibirIdProjeto(proj.getId());
 		this.pview.exibirNomeProjeto(proj.getNome());
@@ -94,6 +97,9 @@ public class ProjetoController {
 		this.pview.exibirCriadorProjeto(proj.getCriador().getNome());		
 	}
 	
+	/**
+	 * Exibe todos os projetos existentes na lista
+	 */
 	public void exibirTodosProjetos(){
 		this.pview.exibirTituloListaProjetos();
 		for(Projeto proj : this.listaDeProjetos){
