@@ -85,13 +85,17 @@ public class ProjetoController {
 	}
 	
 	
-	public void exibirProjeto(Projeto proj){		
+	private void exibirProjeto(Projeto proj){		
 		this.pview.exibirIdProjeto(proj.getId());
 		this.pview.exibirNomeProjeto(proj.getNome());
 		this.pview.exibirDescricaoProjeto(proj.getDescricao());
 		this.pview.exibirCriadorProjeto(proj.getCriador().getNome());		
 	}
 	
-		
+	public void exibirTodosProjetos(){
+		for(Projeto proj : this.listaDeProjetos){
+			this.exibirProjeto(proj);
+		}
+	}
 	
 }

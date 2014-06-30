@@ -150,6 +150,7 @@ public class ListaOrdenadaTest {
 		
 		lista.getHead();
 		lista.next();
+		lista.next();
 		
 		assertEquals( (Integer) 3, lista.next());
 	}

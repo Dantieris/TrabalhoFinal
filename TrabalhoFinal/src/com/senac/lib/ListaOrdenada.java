@@ -179,13 +179,20 @@ public class ListaOrdenada<T extends Comparable<T>>
 			return false;
 	}
 	
-	public T next(){
+	static boolean first;
+	public T next(){		
 		if(iter.equals(head)){
 			iter = iter.getProximo();
+			first = true;
 			return this.head.getValor();
 		}
-		
+
 		if(hasNext()) {
+			if(first){
+				first = false;
+				return iter.getValor();
+				
+			}
 			iter = iter.getProximo();
 			return iter.getValor();
 		}
