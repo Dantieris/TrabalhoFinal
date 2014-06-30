@@ -1,5 +1,6 @@
 package com.senac.controller;
 import com.senac.model.Issue;
+import com.senac.model.Usuario;
 import com.senac.view.*;
 import com.senac.model.Projeto;
 import com.senac.lib.ListaOrdenada;
@@ -80,7 +81,8 @@ public class ProjetoController {
 		this.pview.exibir("Bem vindo ao Cadastro de Projetos");
 		String nomeProj = this.pview.receber("Por favor Insira o nome do projeto: ");
 		String descricaoProj = this.pview.receber("Por favor Insira uma descricao para o projeto: ");
-		this.projeto = new Projeto(this.userControll.getUsuarioLogado(), nomeProj, descricaoProj);
+		//this.projeto = new Projeto(this.userControll.getUsuarioLogado(), nomeProj, descricaoProj);
+		this.projeto = new Projeto(new Usuario("guilherme", "gui", "123"), nomeProj, descricaoProj);
 		this.addProjeto(this.projeto);
 	}
 	
@@ -97,5 +99,5 @@ public class ProjetoController {
 			this.exibirProjeto(proj);
 		}
 	}
-	
+		
 }
