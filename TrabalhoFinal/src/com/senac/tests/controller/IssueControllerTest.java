@@ -10,6 +10,7 @@ import com.senac.controller.IssueController;
 import com.senac.lib.Criticidade;
 import com.senac.lib.ListaOrdenada;
 import com.senac.lib.Tipo;
+import com.senac.lib.Vetor;
 import com.senac.model.Issue;
 
 public class IssueControllerTest {
@@ -27,15 +28,17 @@ public class IssueControllerTest {
 
 	@Test
 	public void testOrdenarPorDataRetornaListaOrdenada() {
-		ic.addIssue(new Issue("", "", Criticidade.CRITICAL, Tipo.BUG, 1));
-		ic.addIssue(new Issue("", "", Criticidade.CRITICAL, Tipo.BUG, 4));
-		ic.addIssue(new Issue("", "", Criticidade.CRITICAL, Tipo.BUG, 2));
+		Vetor<Issue> vetor = new Vetor<Issue>();
 		
-		ListaOrdenada<Issue> lista = ic.ordenarPorData();
+		vetor.put(0, new Issue("", "", Criticidade.CRITICAL, Tipo.BUG, 3));
+		vetor.put(1, new Issue("", "", Criticidade.CRITICAL, Tipo.BUG, 1));
+		vetor.put(2, new Issue("", "", Criticidade.CRITICAL, Tipo.BUG, 2));
 		
-		assertTrue( lista.next().equals(1) &&
-					lista.next().equals(2) && 
-					lista.next().equals(4) );
+		vetor = ic.ordenarPorData(vetor);
+		
+		assertTrue( vetor.get(0).getDataCriacao() == 1 &&
+					vetor.get(1).getDataCriacao() == 2 && 
+					vetor.get(2).getDataCriacao() == 3  );
 	}
 
 }
