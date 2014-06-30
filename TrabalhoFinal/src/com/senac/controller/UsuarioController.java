@@ -5,8 +5,8 @@ import com.senac.model.Usuario;
 import com.senac.view.UsuarioView;
 
 
-public class UsuarioController {
-
+public class UsuarioController {	
+	private Usuario usuario;
 	private Usuario usuarioLogado;
 	private Vetor<Usuario> cadastrados;
 	private int contadorCadastrados;
@@ -111,7 +111,9 @@ public class UsuarioController {
 	 * @param senha Uma Sting com a senha do novo usuário.
 	 */
 	public void cadastrar(String nome, String username, String senha) {
-		addUsuarioCadastrado( new Usuario(nome, username, senha) );
+		this.usuario = new Usuario(nome, username, senha);
+		addUsuarioCadastrado(this.usuario);
+		this.setUsuarioLogado(this.usuario);
 	}
 	
 	/**
@@ -120,6 +122,10 @@ public class UsuarioController {
 	 */
 	public void exibirNomeusuario(Usuario usuario){
 		this.uView.exibirNome(usuario.getNome());
+	}
+	
+	public UsuarioView getUsuarioView(){
+		return this.uView;
 	}
 	
 }

@@ -18,4 +18,9 @@ public class ProjetoView extends ConsoleView {
 		this.exibir("Criador: " + criador); 
 	}
 	
+	public void exibirTituloListaProjetos(){
+		this.exibir("- - - - - - - - - - -  - - - ");
+		this.exibir("Lista de Projetos: ");
+	}
+	
 }

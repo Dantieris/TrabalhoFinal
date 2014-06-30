@@ -95,6 +95,7 @@ public class ProjetoController {
 	}
 	
 	public void exibirTodosProjetos(){
+		this.pview.exibirTituloListaProjetos();
 		for(Projeto proj : this.listaDeProjetos){
 			this.exibirProjeto(proj);
 		}
