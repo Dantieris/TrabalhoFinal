@@ -28,8 +28,11 @@ public class ProjetoControllerTest {
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() throws Exception {		
 		this.projController = null;
+		this.proj = null;
+		desenvolvedor = null;
+		projeto = null;		
 	}
 
 	@Test
@@ -71,6 +74,16 @@ public class ProjetoControllerTest {
 	}
 	
 	@Test
+	public void testForEachListarUmProjeto(){
+		this.projController.addProjeto(this.proj);
+		for(Projeto projeto : this.projController.getListaDeProjetos()){
+			assertEquals(proj, projeto);
+			System.out.println(projeto.getNome());
+		}
+	}
+	
+	
+	@Test
 	public void testForEachListarProjetos(){
 		Projeto proj2 = new Projeto(this.desenvolvedor, "Proj2", "projeto teste2");
 		Projeto proj3 = new Projeto(this.desenvolvedor, "Proj3", "projeto teste3");
@@ -79,7 +92,7 @@ public class ProjetoControllerTest {
 		this.projController.addProjeto(proj3);
 		
 		for(Projeto proj : this.projController.getListaDeProjetos()){
-			System.out.println(proj.getNome() + proj.getId());
+			System.out.println(proj.getNome() +" - "+ proj.getId());
 		}
 	}
 }

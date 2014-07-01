@@ -56,6 +56,7 @@ public class Controller {
 				this.pc.preencherNovoProjeto();
 				break;
 			case 3:
+				cv.exibir("opcao exibir todos os projetos!");
 				this.pc.exibirTodosProjetos();
 				break;
 			case 0:
