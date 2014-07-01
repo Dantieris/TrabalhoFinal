@@ -70,5 +70,16 @@ public class ProjetoControllerTest {
 		assertEquals(null, this.projController.getProjeto(proj));
 	}
 	
-	
+	@Test
+	public void testForEachListarProjetos(){
+		Projeto proj2 = new Projeto(this.desenvolvedor, "Proj2", "projeto teste2");
+		Projeto proj3 = new Projeto(this.desenvolvedor, "Proj3", "projeto teste3");
+		this.projController.addProjeto(proj);
+		this.projController.addProjeto(proj2);
+		this.projController.addProjeto(proj3);
+		
+		for(Projeto proj : this.projController.getListaDeProjetos()){
+			System.out.println(proj.getNome() + proj.getId());
+		}
+	}
 }

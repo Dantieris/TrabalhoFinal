@@ -107,4 +107,11 @@ public class ProjetoController {
 		}
 	}
 		
+	/**
+	 * Retorna uma lista ordenada com todos os projetos.
+	 * @return
+	 */
+	public ListaOrdenada<Projeto> getListaDeProjetos(){
+		return this.listaDeProjetos;
+	}
 }
